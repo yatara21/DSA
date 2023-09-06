@@ -1,6 +1,6 @@
-// queue using simple array.
+// queue using a simple array.
 
-public class queue<T> {
+public class Queue<T> {
     private int front;
     private int rear;
     private T[] arr;
