@@ -6,14 +6,14 @@ public class Queue<T> {
     private T[] arr;
     private int size;
     private int capacity;
-    public queue(int capacity){  
+    public Queue(int capacity){  
         size = 0;
         this.capacity = capacity;
         front = -1;
         rear = -1;
         arr = (T[]) new Object[capacity];
     }
-    public queue(){}
+    public Queue(){}
 
     public void enqueue(T element){
         if(isFull()){
