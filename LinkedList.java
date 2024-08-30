@@ -28,6 +28,7 @@ public class LinkedList<E> {
                 return true;
             if (o == null || getClass() != o.getClass())
                 return false;
+            @SuppressWarnings("unchecked")
             Node node = (Node) o;
             return data.equals(node.data);
         }
