@@ -1,5 +1,5 @@
 import java.util.LinkedList;
-
+import java.util.Iterator;
 public class MyHash<K extends Comparable<K>, V> {
     private static final double DEFAULT_MAX_LOAD_FACTOR = 0.75;
 
@@ -17,7 +17,32 @@ public class MyHash<K extends Comparable<K>, V> {
             return this.key.compareTo(that.key);
         }
     }
-
+    @SuppressWarnings("unused")
+    private class IteratorHelper<T> implements Iterator<T> {
+        T[] keys;
+        int position;
+        @SuppressWarnings("unchecked")
+        public IteratorHelper() {
+            keys = (T[]) new Object[numOfElements];
+            int p = 0;
+            for (int i = 0; i < tableSize; i++) {
+                LinkedList<Node> list = hashTable[i];
+                for (Node node : list) {
+                    keys[p++] = (T) node.key;
+                }
+            }
+        position = 0;
+        }
+        @Override
+        public boolean hasNext() {
+            return position < numOfElements;
+        }
+        @Override
+        public T next() {
+            return keys[position++];
+        }
+    }
+   
     private int numOfElements;
     private double maxLoadFactor;
     private int tableSize;
